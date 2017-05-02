@@ -1,0 +1,95 @@
+<html>
+  <head>
+    
+    <title>Manufacturing</title>
+    
+    <meta name="viewport" content="initial-scale=1.0" />
+  </head>
+  <body>
+    <div>Catalog: <a href="../index">Home</a></div>
+    <hr>
+    
+<h1>Manufacturing</h1>
+
+<ul>
+  
+  <li> <a href="http://localhost:5000/catalog/c102/product/iiu8393">Wired Cat </a> ($10.62)</li>
+
+  
+  <li> <a href="http://localhost:5000/catalog/c102/product/slz2742">Awesome Bike </a> ($93.32)</li>
+
+  
+  <li> <a href="http://localhost:5000/catalog/c102/product/bps8007">Pearl Yoga Pants </a> ($72.63)</li>
+
+  
+  <li> <a href="http://localhost:5000/catalog/c102/product/drv7375">Boogie Boogie Pilates Rack </a> ($36.42)</li>
+
+  
+  <li> <a href="http://localhost:5000/catalog/c102/product/ivt5616">Spiffy Sippy Cup </a> ($62.87)</li>
+
+  
+  <li> <a href="http://localhost:5000/catalog/c102/product/jgw5803">Shiny Cat </a> ($70.21)</li>
+
+  
+  <li> <a href="http://localhost:5000/catalog/c102/product/rdd1364">Boogie Boogie Monkeydog </a> ($22.88)</li>
+
+  
+  <li> <a href="http://localhost:5000/catalog/c102/product/bay6068">Pearl Ambulance </a> ($97.13)</li>
+
+  
+  <li> <a href="http://localhost:5000/catalog/c102/product/lxr7044">Awesome Mouse </a> ($97.1)</li>
+
+  
+  <li> <a href="http://localhost:5000/catalog/c102/product/rmw5986">Shiny Telephone </a> ($82.51)</li>
+
+  
+  <li> <a href="http://localhost:5000/catalog/c102/product/xba5771">Shiny Book </a> ($1.2)</li>
+
+  
+  <li> <a href="http://localhost:5000/catalog/c102/product/bzf6502">Excellent Cat </a> ($97.3)</li>
+
+  
+  <li> <a href="http://localhost:5000/catalog/c102/product/yad4026">Pearl Pilates Rack </a> ($7.14)</li>
+
+  
+  <li> <a href="http://localhost:5000/catalog/c102/product/jlz9892">Curly Hedgehog </a> ($67.26)</li>
+
+  
+  <li> <a href="http://localhost:5000/catalog/c102/product/vgl5905">Red Telephone </a> ($67.79)</li>
+
+  
+  <li> <a href="http://localhost:5000/catalog/c102/product/xfb1350">Boogie Boogie Cat </a> ($38.77)</li>
+
+  
+  <li> <a href="http://localhost:5000/catalog/c102/product/hwf7821">Wired Calendar </a> ($54.22)</li>
+
+  
+  <li> <a href="http://localhost:5000/catalog/c102/product/rsf2548">Shiny Badger </a> ($61.98)</li>
+
+  
+  <li> <a href="http://localhost:5000/catalog/c102/product/ung0638">Excellent Gorilla Suit </a> ($52.91)</li>
+
+  
+  <li> <a href="http://localhost:5000/catalog/c102/product/zww0013">Curly Calendar </a> ($63.73)</li>
+
+  
+  <li> <a href="http://localhost:5000/catalog/c102/product/yyu4835">Wired Cassette </a> ($22.28)</li>
+
+  
+  <li> <a href="http://localhost:5000/catalog/c102/product/vyo4054">Matte Cassette </a> ($60.36)</li>
+
+  
+  <li> <a href="http://localhost:5000/catalog/c102/product/ypd8664">Red Book </a> ($43.38)</li>
+
+  
+  <li> <a href="http://localhost:5000/catalog/c102/product/ziq0883">Wired Telephone </a> ($1.6)</li>
+
+  
+</ul>
+
+<a href="../api/catalog/c102">api-view</a>
+
+
+
+  </body>
+</html>

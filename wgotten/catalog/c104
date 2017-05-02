@@ -1,0 +1,83 @@
+<html>
+  <head>
+    
+    <title>Industrial Services</title>
+    
+    <meta name="viewport" content="initial-scale=1.0" />
+  </head>
+  <body>
+    <div>Catalog: <a href="../index">Home</a></div>
+    <hr>
+    
+<h1>Industrial Services</h1>
+
+<ul>
+  
+  <li> <a href="http://localhost:5000/catalog/c104/product/wvr2403">Matte Ambulance </a> ($54.79)</li>
+
+  
+  <li> <a href="http://localhost:5000/catalog/c104/product/kmj9900">Shiny Pilates Rack </a> ($13.76)</li>
+
+  
+  <li> <a href="http://localhost:5000/catalog/c104/product/vxg5499">Awesome Cat </a> ($77.89)</li>
+
+  
+  <li> <a href="http://localhost:5000/catalog/c104/product/odp5923">Red Book </a> ($80.6)</li>
+
+  
+  <li> <a href="http://localhost:5000/catalog/c104/product/gqa1995">Boogie Boogie Book </a> ($79.8)</li>
+
+  
+  <li> <a href="http://localhost:5000/catalog/c104/product/acn5648">Spiffy Mouse </a> ($80.94)</li>
+
+  
+  <li> <a href="http://localhost:5000/catalog/c104/product/ocv8048">Spiffy Ambulance </a> ($97.41)</li>
+
+  
+  <li> <a href="http://localhost:5000/catalog/c104/product/oka3056">Wired Monkeydog </a> ($95.31)</li>
+
+  
+  <li> <a href="http://localhost:5000/catalog/c104/product/nxe8634">Excellent Cat </a> ($33.31)</li>
+
+  
+  <li> <a href="http://localhost:5000/catalog/c104/product/qrt1021">Boogie Boogie Bike </a> ($53.83)</li>
+
+  
+  <li> <a href="http://localhost:5000/catalog/c104/product/ndb8299">Spiffy Cassette </a> ($43.76)</li>
+
+  
+  <li> <a href="http://localhost:5000/catalog/c104/product/zki9824">Pearl Ambulance </a> ($35.31)</li>
+
+  
+  <li> <a href="http://localhost:5000/catalog/c104/product/aum3555">Awesome Cassette </a> ($4.83)</li>
+
+  
+  <li> <a href="http://localhost:5000/catalog/c104/product/jbq4457">Curly Hedgehog </a> ($99.31)</li>
+
+  
+  <li> <a href="http://localhost:5000/catalog/c104/product/pxk4137">Excellent Gorilla Suit </a> ($83.37)</li>
+
+  
+  <li> <a href="http://localhost:5000/catalog/c104/product/raf6825">Pearl Calendar </a> ($78.54)</li>
+
+  
+  <li> <a href="http://localhost:5000/catalog/c104/product/qat8550">Excellent Pilates Rack </a> ($77.13)</li>
+
+  
+  <li> <a href="http://localhost:5000/catalog/c104/product/fks8581">Curly Cat </a> ($12.95)</li>
+
+  
+  <li> <a href="http://localhost:5000/catalog/c104/product/yvh1891">Shiny Monkeydog </a> ($30.11)</li>
+
+  
+  <li> <a href="http://localhost:5000/catalog/c104/product/avq0833">Boogie Boogie Calendar </a> ($70.94)</li>
+
+  
+</ul>
+
+<a href="../api/catalog/c104">api-view</a>
+
+
+
+  </body>
+</html>

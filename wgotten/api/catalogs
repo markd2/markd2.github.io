@@ -1,0 +1,20 @@
+{
+  "response": [
+    {
+      "id": "c104", 
+      "name": "Industrial Services"
+    }, 
+    {
+      "id": "c101", 
+      "name": "Consumer Products"
+    }, 
+    {
+      "id": "c102", 
+      "name": "Manufacturing"
+    }, 
+    {
+      "id": "c103", 
+      "name": "Retroencabulators"
+    }
+  ]
+}

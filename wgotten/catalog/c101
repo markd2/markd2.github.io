@@ -1,0 +1,80 @@
+<html>
+  <head>
+    
+    <title>Consumer Products</title>
+    
+    <meta name="viewport" content="initial-scale=1.0" />
+  </head>
+  <body>
+    <div>Catalog: <a href="../index">Home</a></div>
+    <hr>
+    
+<h1>Consumer Products</h1>
+
+<ul>
+  
+  <li> <a href="http://localhost:5000/catalog/c101/product/cjj8883">Red Yoga Pants </a> ($63.17)</li>
+
+  
+  <li> <a href="http://localhost:5000/catalog/c101/product/mhk8043">Matte Cassette </a> ($85.64)</li>
+
+  
+  <li> <a href="http://localhost:5000/catalog/c101/product/nbc6311">Pearl Hedgehog </a> ($61.39)</li>
+
+  
+  <li> <a href="http://localhost:5000/catalog/c101/product/tcf4693">Matte Hedgehog </a> ($37.76)</li>
+
+  
+  <li> <a href="http://localhost:5000/catalog/c101/product/dtn9120">Matte Book </a> ($60.92)</li>
+
+  
+  <li> <a href="http://localhost:5000/catalog/c101/product/eab4573">Matte Calendar </a> ($36.05)</li>
+
+  
+  <li> <a href="http://localhost:5000/catalog/c101/product/fzl7038">Wired Yoga Pants </a> ($51.89)</li>
+
+  
+  <li> <a href="http://localhost:5000/catalog/c101/product/ove0419">Pearl Cat </a> ($7.49)</li>
+
+  
+  <li> <a href="http://localhost:5000/catalog/c101/product/rcx6582">Curly Mouse </a> ($31.3)</li>
+
+  
+  <li> <a href="http://localhost:5000/catalog/c101/product/msr0369">Excellent Monkeydog </a> ($41.67)</li>
+
+  
+  <li> <a href="http://localhost:5000/catalog/c101/product/jvr3739">Awesome Oboe </a> ($34.97)</li>
+
+  
+  <li> <a href="http://localhost:5000/catalog/c101/product/spe4734">Boogie Boogie Monkeydog </a> ($17.69)</li>
+
+  
+  <li> <a href="http://localhost:5000/catalog/c101/product/drg9381">Curly Telephone </a> ($59.43)</li>
+
+  
+  <li> <a href="http://localhost:5000/catalog/c101/product/hce5075">Awesome Pilates Rack </a> ($30.89)</li>
+
+  
+  <li> <a href="http://localhost:5000/catalog/c101/product/wig7140">Wired Cassette </a> ($69.89)</li>
+
+  
+  <li> <a href="http://localhost:5000/catalog/c101/product/yvp9355">Shiny Ambulance </a> ($10.8)</li>
+
+  
+  <li> <a href="http://localhost:5000/catalog/c101/product/ywf6547">Wired Mouse </a> ($98.26)</li>
+
+  
+  <li> <a href="http://localhost:5000/catalog/c101/product/uug2794">Boogie Boogie Hedgehog </a> ($77.9)</li>
+
+  
+  <li> <a href="http://localhost:5000/catalog/c101/product/gaq3150">Wired Mouse </a> ($79.18)</li>
+
+  
+</ul>
+
+<a href="../api/catalog/c101">api-view</a>
+
+
+
+  </body>
+</html>
