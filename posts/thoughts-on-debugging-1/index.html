@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Thoughts on Debugging, Part 1 | Borkware Miniblog</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="tags: iOS Mac Leveling\ Up Debugging claimer and link
+You can find Part 2 of this series here
+Im told Im a pretty good debugger. Friends come to me to help solve software problems. And occasionally it works. But what is a good debugger? What is debugging? Making software run better? Reducing the entropy of the universe? We all know what &ldquo;Debugging&rdquo; is because we all do it, but it&rsquo;s still an interesting question.">
+    <meta name="generator" content="Hugo 0.123.2">
+    
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.css" >
+
+
+
+    
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://borkware.com/posts/thoughts-on-debugging-1/">
+    
+
+    <meta property="og:title" content="Thoughts on Debugging, Part 1" />
+<meta property="og:description" content="tags: iOS Mac Leveling\ Up Debugging claimer and link
+You can find Part 2 of this series here
+Im told Im a pretty good debugger. Friends come to me to help solve software problems. And occasionally it works. But what is a good debugger? What is debugging? Making software run better? Reducing the entropy of the universe? We all know what &ldquo;Debugging&rdquo; is because we all do it, but it&rsquo;s still an interesting question." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://borkware.com/posts/thoughts-on-debugging-1/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2014-05-15T10:10:22+00:00" />
+<meta property="article:modified_time" content="2014-05-15T10:10:22+00:00" />
+
+<meta itemprop="name" content="Thoughts on Debugging, Part 1">
+<meta itemprop="description" content="tags: iOS Mac Leveling\ Up Debugging claimer and link
+You can find Part 2 of this series here
+Im told Im a pretty good debugger. Friends come to me to help solve software problems. And occasionally it works. But what is a good debugger? What is debugging? Making software run better? Reducing the entropy of the universe? We all know what &ldquo;Debugging&rdquo; is because we all do it, but it&rsquo;s still an interesting question."><meta itemprop="datePublished" content="2014-05-15T10:10:22+00:00" />
+<meta itemprop="dateModified" content="2014-05-15T10:10:22+00:00" />
+<meta itemprop="wordCount" content="1829">
+<meta itemprop="keywords" content="leveling up,debugging,iOS,Mac,programming," /><meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Thoughts on Debugging, Part 1"/>
+<meta name="twitter:description" content="tags: iOS Mac Leveling\ Up Debugging claimer and link
+You can find Part 2 of this series here
+Im told Im a pretty good debugger. Friends come to me to help solve software problems. And occasionally it works. But what is a good debugger? What is debugging? Making software run better? Reducing the entropy of the universe? We all know what &ldquo;Debugging&rdquo; is because we all do it, but it&rsquo;s still an interesting question."/>
+
+	
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        Borkware Miniblog
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      
+<div class="ananke-socials">
+  
+</div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Posts
+      </aside>
+      
+
+
+
+
+
+
+
+
+
+
+  <div id="sharing" class="mt3 ananke-socials">
+    
+  </div>
+
+
+      <h1 class="f1 athelas mt3 mb1">Thoughts on Debugging, Part 1</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2014-05-15T10:10:22Z">May 15, 2014</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>tags: iOS Mac Leveling\ Up Debugging
+claimer and link</p>
+<p><em>You can find Part 2 of this series <a href="/posts/thoughts-on-debugging-2/">here</a></em></p>
+<p>Im told Im a pretty good debugger. Friends come to me to help solve software problems. And occasionally it works. But what is a good debugger? What is <em>debugging</em>? Making software run better? Reducing the entropy of the universe? We all know what &ldquo;Debugging&rdquo; is because we all do it, but it&rsquo;s still an interesting question. You could think of debugging in the same way as adding new features to software – you&rsquo;re just taking this program from one state to another, like it&rsquo;s a great big state machine.</p>
+<p>That being said, I tend to find pondering metaquestions a fun diversion, best with friends sharing a bottle of <a href="https://www.glenoradistillery.com/glenora-whisky">Glen Breton</a>. But ultimately it can be a fruitless pursuit.</p>
+<p>Debugging, to me, is just a skill. It&rsquo;s an analytical skill, but fundamentally it is a skill that can be learned and developed through practice: you identify problems, analyze the system to figure out what is causing that problem, and then figure out the changes necessary to correct the problem. Finding the cause leads to the solution. The fix might not be practical from a business perspective. If fixing this bug requires overhauling the entire app, it might make better sense to leave it than to pay what it would take to fix.</p>
+<p>Debugging can be really difficult. <a href="/posts/my-first-professional-bug/">My first professional bug</a> took a solid month to track down. Granted, a lot of that time was getting oriented in the software and learning about the available tools, but a month is a long time in the software biz. Rest assured that it can get easier with practice.</p>
+<p>Debugging can be easier for some personality types. It&rsquo;s a very tactical process. You&rsquo;Re caught up in details and really don&rsquo;t need to care about any overarching plan or architecture. You&rsquo;Re there to find, and perhaps fix, a specific problem as it has manifested in a software system. Luckily Im a very tactical thinker (Im terrible at strategy games). Maybe it&rsquo;s all those years playing in bands and orchestras. The strategy has already been dictated by the composer and the conductor – my task as a musician is to implement my part of the strategy.</p>
+<h2 id="levels-of-pain">Levels of Pain</h2>
+<p>I divide bugs into three buckets.</p>
+<p>There&rsquo;s the <strong>Five Minute Fix</strong>. It&rsquo;s a problem I&rsquo;ve seen before and I know what it is. The gimmies. Brent Simmons has a fun post on (The Dramatic Nature of the Easiest Bugs to Fix)[https://inessential.com/2014/05/12/the_dramatic_nature_of_the_easiest_bugs_.html], where to someone unfamiliar with software development, it would seem that the effects of a catastrophic bug are proportional to the difficulty of fixing said bug. Oftentimes it&rsquo;s the opposite. Many crashes are like this. There is an error that takes down the entire program, losing user data and perhaps corrupting on-disk data stores. But often times with a crasher you can look at a stack trace, see a smoking gun, and realize it&rsquo;s bad <code>NSLog</code> parameters, an <code>NSNotFound</code> ended up being used as an index into an <code>NSArray</code>, or you&rsquo;re trying to jump through an uninitialized pointer.</p>
+<p>The next level are the <strong>one-hour to one-day fixes</strong>. These take some investigation, and benefit from some organization – keeping notes and whatnot. You&rsquo;Re mainly following a trail of broken data to its source.</p>
+<p>And finally are the <strong>OMG WTF</strong> bugs. I have no idea what is going on. Dear Program, <em>This Cannot Be</em>, you&rsquo;re shaking my faith in all things computational. I both hate and love these bugs. The final solution leads to a great war story to tell, but up until that time, your brain hurts from the unexplainable weirdness of it all.</p>
+<p>When you&rsquo;re first starting out your programming career, everything might be in the omg-wtf category. Even experienced developers, when they change toolkits, are in omg-wtf category. But as you see classes of bugs crop up again (and again and again), bugs move into the easier to solve bins.
+I fundamentally think were still in the <a href="/posts/tell-the-story/">stone knives and bear skins</a> level of software development. Can you imagine a mechanical engineer saying &ldquo;Sorry the bridge has been delayed again. Gravity keeps changing and the concrete is transmuting to lead after every fourth girder is raised. Hang on while I put on my shaman mask and I can talk about it.&rdquo; There&rsquo;s not a step-by-step plan you can follow to guarantee finding and fixing a bug (although the <a href="/posts/universal-troubleshooting-process/">Universal Troubleshooting Process</a> is a step in that direction.)</p>
+<h2 id="dont-panic-breathe">Don&rsquo;t Panic! (Breathe)</h2>
+<p>You&rsquo;re faced with a bad omg-wtf level bug. Maybe you&rsquo;re brand new on the job and you&rsquo;re wanting to make a good impression on your future colleagues. Maybe you&rsquo;re the chief architect of the project and nothing is working right.</p>
+<p>First off, don&rsquo;t panic. It&rsquo;s not that bad. Take a breather. You may be pumped on adrenaline. Your reputation may be on the line. The company is losing money every minute the servers are down. This could be a career limiting problem. You&rsquo;Ve been chewing on the same bug for a month and people think you&rsquo;re dumb.</p>
+<p>That may all be true.</p>
+<p>But you have to have a clear, analytical mind. You need to clear the decks of the emotion and concentrate on the problem. For a great many of us, a bug is not immediate life and death. It&rsquo;s first-world inconvenience. Even though <a href="/posts/my-favorite-bug/">my favorite bug</a> was a major regression in a popular product, and a Very Important Release hinged on it being fixed, but in the big scheme of things the Earth will not explode if you&rsquo;re unable to drag a graphic into a particular piece of software.</p>
+<h2 id="everything-you-know-is-wrong">Everything You Know is Wrong</h2>
+<p><img src="everything-know-wrong.jpg" alt=""></p>
+<p>OK. Now that you&rsquo;ve calmed down, realize that everything you know is wrong. If what you know about the system is actually correct, you wouldnt be tracking down a bug, or at least itd be in the Five Minute Fix category.</p>
+<p>Therefore, your knowledge of the system must be incorrect.</p>
+<p>If you knew which piece of your knowledge about the system was incorrect, you&rsquo;d be back in the <em>Five Minute Fix</em> zone. This is one of my key pieces of mental state – it&rsquo;s how I start a debugging session. Clear the decks of assumptions and start gathering data.</p>
+<p>To me, the activity of debugging is moving chunks of the program from the &ldquo;this is wrong, incorrect, and horribly broken&rdquo; pile to the &ldquo;ok, this is how things ought to work&rdquo; pile. Somewhere along the line, youll be unable to move a piece of code into the &ldquo;how things should work&rdquo; pile. Thats a good candidate to find the bug.</p>
+<p><em>(OBTW, the image above is from the original &ldquo;Phone Book&rdquo; edition of Inside Macintosh. It&rsquo;s a phrase that has a long, proud heritage. Thanks to <a href="http://jeff-barr.com/">Jeff Barr</a> for that image. I knew Jeff before he had purple hair.)</em></p>
+<h2 id="the-mental-model">The Mental Model</h2>
+<p>A program fundamentally has three parts:</p>
+<ul>
+<li>There are the classes that comprise your code.</li>
+<li>There&rsquo;s the toolkit, which is a vendor-supplied pile of functionality. This could be Cocoa or CocoaTouch from Apple, or Rails, or .Net.</li>
+<li>There&rsquo;s also the System, the platform on which your classes and the toolkit are running. It could be OS X, iOS, Windows RT, or Linux. Your program is defined by the interaction between these three layers.</li>
+</ul>
+<p>A mental model is the collection of facts about each of these parts, and the understanding of how they should behave. If Im fresh into a system, that mental model may be empty. If Im the principal developer of a system, my model will be more complex.</p>
+<h2 id="question-everything">Question Everything</h2>
+<p>But, because there&rsquo;s a bug I don&rsquo;t know the cause of, there must be something wrong with my mental model. Therefore question everything. Move towards understanding.</p>
+<p>Well, maybe don&rsquo;t question <strong>everything</strong> (yet). But if you have a bug you havent found, then your mental model <em>must</em> be wrong, somewhere.</p>
+<p>So question everything, but within reason. You wouldnt want to reinvent Unix from first principles for every bug. Some parts of my mental model have to be correct to even begin analyzing the world. I have a hierarchy of potential blame, and I concentrate my work at the top of the list, assuming parts underneath are good.</p>
+<h2 id="the-hierarcy-of-blame">The Hierarcy of Blame</h2>
+<ul>
+<li>New code</li>
+<li>Old code</li>
+<li>Library code (third party code, say something like AFNetworking)</li>
+<li>Cocoa (or UIKit, or first-party platform code)</li>
+<li>The compiler / build chain</li>
+</ul>
+<p>New code is always suspect – it hasn&rsquo;t had the battle damage that older code has endured, meaning that there are simple defects that havent been shaken out yet. When a system goes from a working to a non-working state, the new stuff is always the first place to look (and blame).</p>
+<p>Old code doesnt get off with a free ticket. There may have been Lurking Software Defects that appear due to new data going through the system. Maybe there&rsquo;s an unexpected character encoding in a database thats being downloaded from a web service. Maybe there&rsquo;s a malformed web spider script thats sending corrupted HTTP headers that are killing your header parsing code. <em>(both of those I actually got to track down)</em></p>
+<p>Popular third-party library code is less likely to be the place to start looking for bugs because they tend to be well tested, either explicitly via unit tests, or implicitly by a lot of projects using them. I&rsquo;ll tend to blame my code first, but I&rsquo;ll not hesitate to single-step into the library if I think the problem may be there. Non-wildly-popular libraries get lumped into the &ldquo;my code&rdquo; bucket because they probably have not been as thoroughly tested or exercised.</p>
+<p>Fundamental toolkits, like Cocoa(Touch) generally get a free ride until the end of the debugging process. I&rsquo;ll always assume that the bug is my fault, and the toolkit is working correctly (or at least working as documented). In general, if you think there&rsquo;s a bug in something as fundamental as NSArray or NSDictionary, you&rsquo;d be wrong. I tend to blame higher level objects in toolkits, though. If you think there&rsquo;s a bug in MPMusicPlayerController, you&rsquo;d probably be right.</p>
+<p>Apple has a large engineering and QA team to work out many issues, plus fairly long pre-release cycles for new OS versions. I am willing to blame the toolkit if evidence starts pointing that direction. You can use the tools in <a href="/posts/leveling-up/">Leveling Up</a> to pull apart the library and see if the problem is there.</p>
+<p><em>(2024 update : totally new rewrite-the-world first-party frameworks like SwiftUI don&rsquo;t get the assumption that things most likely work.  Those live somewhere between old-code and popular third-party library code)</em></p>
+<p>And finally, I never blame the compiler unless there&rsquo;s no other option. The LLVM team <em>(and Swift team)</em> are awesome, and they produce high-quality work. Sometimes you do find compiler bugs, like in this <a href="https://www.mikeash.com/pyblog/friday-qa-2013-06-28-anatomy-of-a-compiler-bug.html">Mike Ash analysis of a compiler bug</a>, but they tend to be extreme corner cases.</p>
+<p>Next time I&rsquo;ll talk about specifics when tracking down bugs.</p>
+<ul class="pa0">
+  
+   <li class="list di">
+     <a href="/tags/leveling-up/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Leveling Up</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/debugging/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Debugging</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/ios/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">IOS</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/mac/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Mac</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/programming/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Programming</a>
+   </li>
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://borkware.com/" >
+    &copy;  Borkware Miniblog 2024 
+  </a>
+    <div>
+<div class="ananke-socials">
+  
+</div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

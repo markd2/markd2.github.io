@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on Borkware Miniblog</title>
+    <link>http://borkware.com/categories/</link>
+    <description>Recent content in Categories on Borkware Miniblog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="http://borkware.com/categories/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

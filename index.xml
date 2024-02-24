@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Borkware Miniblog</title>
+    <link>http://borkware.com/</link>
+    <description>Recent content on Borkware Miniblog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 23 Feb 2024 22:20:43 -0500</lastBuildDate>
+    <atom:link href="http://borkware.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Adventures in Debugging Keeping a Log</title>
+      <link>http://borkware.com/posts/adventures-in-debugging-keeping-a-log/</link>
+      <pubDate>Fri, 23 Feb 2024 22:20:43 -0500</pubDate>
+      <guid>http://borkware.com/posts/adventures-in-debugging-keeping-a-log/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Leveling Up</title>
+      <link>http://borkware.com/posts/leveling-up/</link>
+      <pubDate>Fri, 23 Feb 2024 21:40:00 -0500</pubDate>
+      <guid>http://borkware.com/posts/leveling-up/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>My Favorite Bug</title>
+      <link>http://borkware.com/posts/my-favorite-bug/</link>
+      <pubDate>Fri, 23 Feb 2024 21:40:00 -0500</pubDate>
+      <guid>http://borkware.com/posts/my-favorite-bug/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Tell the Story</title>
+      <link>http://borkware.com/posts/tell-the-story/</link>
+      <pubDate>Fri, 23 Feb 2024 21:40:00 -0500</pubDate>
+      <guid>http://borkware.com/posts/tell-the-story/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Universal Troubleshooting Process</title>
+      <link>http://borkware.com/posts/universal-troubleshooting-process/</link>
+      <pubDate>Fri, 23 Feb 2024 21:40:00 -0500</pubDate>
+      <guid>http://borkware.com/posts/universal-troubleshooting-process/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>My First Professional Bug</title>
+      <link>http://borkware.com/posts/my-first-professional-bug/</link>
+      <pubDate>Fri, 23 Feb 2024 21:17:17 -0500</pubDate>
+      <guid>http://borkware.com/posts/my-first-professional-bug/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Thoughts on Debugging 2</title>
+      <link>http://borkware.com/posts/thoughts-on-debugging-2/</link>
+      <pubDate>Wed, 28 May 2014 10:10:22 +0000</pubDate>
+      <guid>http://borkware.com/posts/thoughts-on-debugging-2/</guid>
+      <description>tags: iOS Mac Leveling\ Up Debugging&#xA;You can find Part 1 of this series here&#xA;This has happened to everyone. A colleague walks into your space, erases your white board and starts scribbling on it. They say, &amp;ldquo;Hey, I&amp;rsquo;ve got this problem, and I wanted to know if you could help me with it,&amp;rdquo; followed by five minutes of boxes and circles and arrows.&#xA;And then comes, &amp;ldquo;Oh yeah, I see the problem!</description>
+    </item>
+    <item>
+      <title>Thoughts on Debugging, Part 1</title>
+      <link>http://borkware.com/posts/thoughts-on-debugging-1/</link>
+      <pubDate>Thu, 15 May 2014 10:10:22 +0000</pubDate>
+      <guid>http://borkware.com/posts/thoughts-on-debugging-1/</guid>
+      <description>tags: iOS Mac Leveling\ Up Debugging claimer and link&#xA;You can find Part 2 of this series here&#xA;Im told Im a pretty good debugger. Friends come to me to help solve software problems. And occasionally it works. But what is a good debugger? What is debugging? Making software run better? Reducing the entropy of the universe? We all know what &amp;ldquo;Debugging&amp;rdquo; is because we all do it, but it&amp;rsquo;s still an interesting question.</description>
+    </item>
+  </channel>
+</rss>

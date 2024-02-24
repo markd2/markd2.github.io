@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Thoughts on Debugging 2 | Borkware Miniblog</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="tags: iOS Mac Leveling\ Up Debugging
+You can find Part 1 of this series here
+This has happened to everyone. A colleague walks into your space, erases your white board and starts scribbling on it. They say, &ldquo;Hey, I&rsquo;ve got this problem, and I wanted to know if you could help me with it,&rdquo; followed by five minutes of boxes and circles and arrows.
+And then comes, &ldquo;Oh yeah, I see the problem!">
+    <meta name="generator" content="Hugo 0.123.2">
+    
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.css" >
+
+
+
+    
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://borkware.com/posts/thoughts-on-debugging-2/">
+    
+
+    <meta property="og:title" content="Thoughts on Debugging 2" />
+<meta property="og:description" content="tags: iOS Mac Leveling\ Up Debugging
+You can find Part 1 of this series here
+This has happened to everyone. A colleague walks into your space, erases your white board and starts scribbling on it. They say, &ldquo;Hey, I&rsquo;ve got this problem, and I wanted to know if you could help me with it,&rdquo; followed by five minutes of boxes and circles and arrows.
+And then comes, &ldquo;Oh yeah, I see the problem!" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://borkware.com/posts/thoughts-on-debugging-2/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2014-05-28T10:10:22+00:00" />
+<meta property="article:modified_time" content="2014-05-28T10:10:22+00:00" />
+
+<meta itemprop="name" content="Thoughts on Debugging 2">
+<meta itemprop="description" content="tags: iOS Mac Leveling\ Up Debugging
+You can find Part 1 of this series here
+This has happened to everyone. A colleague walks into your space, erases your white board and starts scribbling on it. They say, &ldquo;Hey, I&rsquo;ve got this problem, and I wanted to know if you could help me with it,&rdquo; followed by five minutes of boxes and circles and arrows.
+And then comes, &ldquo;Oh yeah, I see the problem!"><meta itemprop="datePublished" content="2014-05-28T10:10:22+00:00" />
+<meta itemprop="dateModified" content="2014-05-28T10:10:22+00:00" />
+<meta itemprop="wordCount" content="2378">
+<meta itemprop="keywords" content="leveling up,debugging,iOS,Mac,programming," /><meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Thoughts on Debugging 2"/>
+<meta name="twitter:description" content="tags: iOS Mac Leveling\ Up Debugging
+You can find Part 1 of this series here
+This has happened to everyone. A colleague walks into your space, erases your white board and starts scribbling on it. They say, &ldquo;Hey, I&rsquo;ve got this problem, and I wanted to know if you could help me with it,&rdquo; followed by five minutes of boxes and circles and arrows.
+And then comes, &ldquo;Oh yeah, I see the problem!"/>
+
+	
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        Borkware Miniblog
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      
+<div class="ananke-socials">
+  
+</div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Posts
+      </aside>
+      
+
+
+
+
+
+
+
+
+
+
+  <div id="sharing" class="mt3 ananke-socials">
+    
+  </div>
+
+
+      <h1 class="f1 athelas mt3 mb1">Thoughts on Debugging 2</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2014-05-28T10:10:22Z">May 28, 2014</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>tags: iOS Mac Leveling\ Up Debugging</p>
+<p><em>You can find Part 1 of this series <a href="/posts/thoughts-on-debugging-1/">here</a></em></p>
+<p>This has happened to everyone. A colleague walks into your space, erases your white board and starts scribbling on it. They say, &ldquo;Hey, I&rsquo;ve got this problem, and I wanted to know if you could help me with it,&rdquo; followed by five minutes of boxes and circles and arrows.</p>
+<p>And then comes, &ldquo;Oh yeah, I see the problem! Thanks!&rdquo; They walk out, and you haven&rsquo;t even said a word. The same thing happens when you post a question to a mailing list or Stack Overflow, and then discover the solution five minutes later. This is where you get the standard response of, &ldquo;You just organized your thoughts and discovered the solution,&rdquo; followed by sage advice and recommendations to talk to teddy bears and rubber ducks. (I have a <a href="http://i.imgur.com/mxJRmmr.jpg">Bill the Cat</a> that I talk to.)</p>
+<p>Most of the time, though, a colleague walks in to my space, erases the white board, and starts scribbling on it. Five minutes of boxes and circles and arrows later, I get an expectant look that says, &ldquo;So, did you solve it yet? I&rsquo;m still totally stumped.&rdquo; I usually blink back in confusion.</p>
+<p>Information overload. I&rsquo;ve received a barrage of data and I haven&rsquo;t time to assimilate any of it. <strong>Too much detail!</strong> Some may be worthwhile. Some may be noise. I don&rsquo;t know!</p>
+<h2 id="define-the-problem">Define the Problem</h2>
+<p>I like Problem Statements, even though that term sounds very process-oriented: &ldquo;Before electing to address a software defect, one needs an applicable problem statement.&rdquo; But problem statements are simple. It&rsquo;s good to have one before walking into someone else&rsquo;s space. Actually, it&rsquo;s good to have a good problem statement even if you&rsquo;re debugging on your own. If you&rsquo;ve gotten to the point of debugging frustration, <a href="/posts/thoughts-on-debugging-1/">Everything You Know Is Wrong</a>, including what you think is wrong.</p>
+<p>A good problem statement (as it relates to debugging):</p>
+<ul>
+<li>Phrases the bug as simply and concisely as possible.</li>
+<li>Does not pre-form any conclusions.</li>
+<li>Just enumerates what&rsquo;s wrong, and what would make things right.</li>
+</ul>
+<p>Good problem statements are actionable and include victory conditions so you know when to stop debugging.</p>
+<h2 id="object-lessons">Object Lessons</h2>
+<p>An extremely smart Rancher came to me with this problem one day (if you&rsquo;ll excuse the kind of ancient technology discussed):</p>
+<p><em>&ldquo;Hey MarkD, can you help be figure out some ARC memory management issues with some Sprite Kit Sprites?&rdquo;</em></p>
+<p>The question surprised me on a couple of levels. Recall my levels of probability for a bug (new code, old code, library code, Cocoa, the compiler and runtime). ARC comes from Apple&rsquo;s compiler team, who are awesome. The odds of an actual bug there are pretty small. I&rsquo;d definitely blame the prerelease Sprite Kit first with it falling into the &ldquo;New Code&rdquo; category.</p>
+<p><em>&ldquo;What makes you think you have memory management issues?&rdquo;</em> was my question. The response? <em>&ldquo;My Sprites are just white rectangles, so ARC must be releasing the images.&rdquo;</em></p>
+<p>A good problem statement here would be, &ldquo;I have white rectangles for sprites. I want the sprites to have proper textures.&rdquo; This defines the problem. It also defines the victory conditions. Now we can start working.</p>
+<p>Zero in on the main issue
+One thing I&rsquo;ve discovered when helping beginning programmers debug, whether in a classroom situation or 1:1 mentoring, is an obsession with data. The description of the problem comes in a torrent of information, usually explaining everything the programmer has already looked at.</p>
+<p>When I come to a problem with a clean mind, I don&rsquo;t <em>want</em> to know what all you&rsquo;ve considered. The details will just bounce off my head. My mind is <a href="https://www.youtube.com/watch?v=7tScAyNaRdQ">made of meat</a> like yours, and I haven&rsquo;t assimilated everything yet, so I&rsquo;m subject to the <a href="https://en.wikipedia.org/wiki/The_Magical_Number_Seven,_Plus_or_Minus_Two">magic number plus/minus 2</a> cognitive limit. Plus, in an instructional capacity, I think there&rsquo;s pedagogical benefit for the student seeing a debugging process from the ground up.</p>
+<p>This happened a couple of months ago:</p>
+<p><em>&ldquo;Hey MarkD, can you help be figure out this problem I&rsquo;m having with layout? Let me describe the full algorithm.&rdquo;</em></p>
+<p>(&hellip; ten minutes bouncing around Xcode later, my eyes glazing over …)</p>
+<p><em>&ldquo;And oh, yeah, and it&rsquo;s crashing on this line.&rdquo;</em></p>
+<p>To which I responded</p>
+<p><em>&ldquo;This crash—that&rsquo;s the problem?&rdquo;</em></p>
+<p><em>&ldquo;Yeah.&rdquo;</em></p>
+<p>Here, the best thing to do is to say, &ldquo;My program is crashing on this line, and I don&rsquo;t know why,&rdquo; with a victory condition of &ldquo;it doesn&rsquo;t crash.&rdquo; That way you avoid going over the river and through the woods.</p>
+<p>During a debugging session, we&rsquo;ll probably hit the rest of the layout algorithm, but it&rsquo;ll be at a speed more amenable to mental assimilation. Then again, the bug might just be a null pointer dereference that takes 30 seconds to figure out.</p>
+<h2 id="dont-pre-solve-the-problem">Don&rsquo;t Pre-Solve the problem</h2>
+<p><em>&ldquo;Hey MarkD, when I&rsquo;m on WiFi I can delete an object from the datastore. On 3G I can&rsquo;t. We have a networking problem, but I can&rsquo;t figure it out.&rdquo;</em></p>
+<p>I think you know how this conversation going to go. <em>&ldquo;What about networking do you think is broken?&rdquo;</em></p>
+<p><em>&ldquo;I print the data we get back, and it&rsquo;s the same in both cases, but the behavior is different between 3G and WiFi, ergo it&rsquo;s a networking issue.&rdquo;</em></p>
+<p>The first part of this is a great problem description. &ldquo;I can&rsquo;t delete an object from the datastore on 3G. WiFi works great.&rdquo; The second part pre-solves the problem. Remember, Everything You Know Is Wrong. If you first assume the networking stack is to blame, and it really isn&rsquo;t, then you&rsquo;ve wasted a lot of time looking in the wrong direction.</p>
+<p>What&rsquo;s the victory condition? &ldquo;I can delete the object from the datastore.&rdquo;</p>
+<h2 id="science">Science!</h2>
+<p>Why go through all the trouble to build a problem statement? Two reasons: the first is to prevent losing time by going down a rabbit hole. The second is that it&rsquo;s easier to apply the good old scientific method that we learned in high school:</p>
+<ol>
+<li>Ask a question (based on the problem statement)</li>
+<li>Construct a hypothesis to explain the question</li>
+<li>Test the hypothesis with an experiment</li>
+<li>Analyze the data. (Do you get closer to the victory condition?)</li>
+<li>Repeat (until fixed)</li>
+</ol>
+<p>I was a science nerd in high school <em>(surprising no one)</em>, having great chemistry, biology, and physics teachers, which led to the basic scientific method being what I use for debugging. Ask a question. Construct a hypothesis. Run a test or two or twelve. <a href="/posts/adventures-in-debugging-keeping-a-log/">Keep a lab notebook</a> log of the data for later analysis.</p>
+<p>I&rsquo;ve written about the [Universal Troubleshooting Process](/posts/universal-troubleshooting-process/ before—it is a specialization of the general scientific method, giving a bit more structure to the approach.</p>
+<h2 id="applications">Applications</h2>
+<p>How did my colleagues and I apply this process in tracking down some of these bugs?</p>
+<p>For the blank sprites, the first question was, &ldquo;Is ARC really implicated?&rdquo; The hypothesis is, &ldquo;ARC is not implicated, due to it being pretty low in the hierarchy of potential blame.&rdquo; The experiment? We took a quick trip through the allocations Instrument and verified the memory management of the sprite images was correct. The next question was, &ldquo;Are the images getting loaded from disk into UIImages correctly?&rdquo; The experiment was a simple breakpoint at the load location and looking at the image data in memory. It too seemed correct. These days, we can QuickLook image pointers in Xcode (unless it&rsquo;s broken in the current version) and see rasterized goodness. Eventually the problem was tracked down deep inside of Sprite Kit, radars filed, and things were fixed before the first public release.</p>
+<p>For the networking/removing an object from the collection issue, an early question during debugging was, &ldquo;Does this problem really only manifest itself on 3G and not WiFi?&rdquo; Experiments were made on different networks and indeed only 3G showed the problem.</p>
+<p>The next question was, &ldquo;3G is implicated. Why is it failing on that network?&rdquo; Hypothesis was, &ldquo;Network responses are not coming back.&rdquo; Simple caveman debugging showed that for all outgoing requests, we got a response. Next hypothesis was, &ldquo;Network responses are coming back in different orders on WiFi and 3G&rdquo;. The same caveman debugging showed that yes, indeed, the responses were being processed in a different order.</p>
+<p>It turned out that the product had a caching layer that was losing coherency due to a race condition between the order of requests returning. On 3G, a slower response was confusing the cache causing the deleted object to immediately resurrect itself. It wasn&rsquo;t a networking problem, just one exacerbated by the network.</p>
+<h2 id="be-single-minded">Be single minded</h2>
+<p>The point of this whole process is to focus on one problem at a time. Don&rsquo;t bounce around between problems. Don&rsquo;t get distracted. Just investigate one thing at a time. If you come across some unrelated data that is interesting or is pertinent to another bug, put it in to your log.</p>
+<p>I have the pleasure of having friends in higher education who are helping train the next generation of developers. I like to chat with them at conferences because they often have interesting insights into this whole teaching thing, and how it differs from the bootcamps we did at the Ranch. One thing that they&rsquo;ve pointed out is that their novice debuggers flail around, chasing different bugs at the same time, wasting a lot of time and generally getting very frustrated. This is understandable because the folks in Programming 101 don&rsquo;t yet have a grasp of how the different layers in system should work, much less figure out what is not working. Unfocused effort is Bad Mojo.</p>
+<p>Good advice, should you find yourself in similar circumstances, is to Be Consistent. Be consistent with your test data. Don&rsquo;t change configurations, databases or the documents you use to test the problem. Be consistent in your bug reproduction steps. Click the same buttons in the same order each time. You could be chasing after a number of different bugs that just happen to manifest themselves in the same way. (It happens. It&rsquo;s happened to me.) By concentrating on one problem at a time, you have much less opportunity for distraction and burning up that most precious resource—your time.</p>
+<p>Be Relentless
+You can&rsquo;t be nice to bugs. They&rsquo;re tenacious. Keep after them. Tools like the Universal Troubleshooting Process are fundamentally binary searches through your program. Nothing can hide from a binary search for long.</p>
+<p>Remember that it&rsquo;s OK to Hack. Source code control has you covered. Maybe a hypothesis is, &ldquo;Callers of this function are actually ignoring its return value&rdquo;. In that case, the experiment is to cut out 200 lines of code and replace it with <code>return 12</code> and see if the callers behave differently.</p>
+<p>Be Weird
+One last bit of babble on this topic. When I&rsquo;m working with someone on a bug, I&rsquo;ll sometimes have them do weird stuff. &ldquo;It&rsquo;s an experiment, we&rsquo;ll get some data out of it.&rdquo;</p>
+<p>There have been times where I&rsquo;ve set a breakpoint that never gets hit. But I know that code has to run for things to work. Remembering that everything I know is wrong, I&rsquo;ll fall back to more basic principles. I&rsquo;ll ask, &ldquo;Is this code I&rsquo;m looking at right now even getting included into the program?&rdquo; To test this, I&rsquo;ll do a cat-stomp on the keyboard:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">startStopListening</span>(<span style="color:#66d9ef">_</span> sender: UIButton) {
+</span></span><span style="display:flex;"><span>ujnwefojwenjowenwoj
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> receivingSocket {
+</span></span><span style="display:flex;"><span>        CFSocketInvalidate(receivingSocket)
+</span></span><span style="display:flex;"><span>        receivingSocket = <span style="color:#66d9ef">nil</span>
+</span></span><span style="display:flex;"><span>        sender.setState(<span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>And then do a build. If the program compiles and links OK, I know this code is not getting compiled at all. Maybe it wasn&rsquo;t added to the target. Maybe there&rsquo;s an <code>#if</code> in the file or an included header in C-land, that&rsquo;s preventing compilation. But now I know it wasn&rsquo;t ridiculous that the breakpoint didn&rsquo;t trigger.</p>
+<p>Similarly, I was helping a friend track down an XPC/privileged helper tool problem. We were caveman debugging stuff and seeing the log text come through on the console, but it seemed like all of the code fixes we were doing were 100% ineffectual.</p>
+<p><em>&ldquo;Hey, can you add a NERDS RULE THE UNIVERSE <code>NSLog</code> right before the XPC connection is set up?&rdquo;</em></p>
+<p><em>&ldquo;Uh, why?&rdquo;</em></p>
+<p>In my mind, I wasn&rsquo;t convinced that our new code was actually getting run, just the same old code. So the question was, &ldquo;Is the new code getting run?&rdquo;, the hypothesis was, &ldquo;It is not getting run. In fact, we keep reusing an old version that&rsquo;s stuck in the matrix.&rdquo; The experiment added that new log statement. If we saw NERDS RULE THE UNIVERSE in the console we would know that our new code was getting deployed properly, and we&rsquo;re just terrible at fixing things. If we didn&rsquo;t see it, we&rsquo;d know our new code was never getting executed. Sure enough, it was a stale privileged helper tool that was not getting replaced by new code.</p>
+<h2 id="whats-the-takeaway">What&rsquo;s the Takeaway?</h2>
+<p>When debugging, it&rsquo;s easy to get mired down in details and to thrash around uncontrollably.</p>
+<p>By knowing levels of pain (five-minute, one-day, omgwtf), you can spot when a bug has moved from one category to another, and you need to pull out more powerful tools.</p>
+<p>By realizing that everything you know is wrong, you can help purge your mind of the preconceptions that are giving the bug a place to hide.</p>
+<p>By having a hierarchy of blame (new code, old code, third-party library code, toolkit code, the compiler), you know to pay more attention to the things at the top of the list and trust the things at the bottom of the list (until real evidence indicates otherwise), freeing up mental resources.</p>
+<p>By having a good problem statement, you can avoid going down rabbit holes and solving the wrong problem.</p>
+<p>By using some flavor of the scientific method, you can acquire <a href="https://www.youtube.com/watch?v=voSpOrimkMY">&ldquo;laser&rdquo;</a>-like focus in finding the bug.</p>
+<p>By concentrating on one problem, you don&rsquo;t waste time chasing your tail.</p>
+<p>By being consistent, you&rsquo;re always attacking the same bug from run to run.</p>
+<p>Don&rsquo;t be afraid to hack code, or to do weird stuff to answer questions. If you can glean a new piece of data about the way your system operates, you&rsquo;ll be ahead of the game.</p>
+<p>And don&rsquo;t forget. Debugging is tough. As you get more experience, the kinds of bugs you&rsquo;ve already fixed just move into an easier bracket, while new and improved bugs move into omgwtf territory, waiting for you to find them.</p>
+<ul class="pa0">
+  
+   <li class="list di">
+     <a href="/tags/leveling-up/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Leveling Up</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/debugging/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Debugging</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/ios/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">IOS</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/mac/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Mac</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/programming/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Programming</a>
+   </li>
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
+    <p class="f5 b mb3">Related</p>
+    <ul class="pa0 list">
+	   
+	     <li  class="mb2">
+          <a href="/posts/thoughts-on-debugging-1/">Thoughts on Debugging, Part 1</a>
+        </li>
+	    
+    </ul>
+</div>
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://borkware.com/" >
+    &copy;  Borkware Miniblog 2024 
+  </a>
+    <div>
+<div class="ananke-socials">
+  
+</div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>
